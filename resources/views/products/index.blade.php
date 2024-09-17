@@ -7,7 +7,8 @@
     <title>Data Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background: lightgray;">
+<body style="background: lightgray">
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
@@ -33,11 +34,11 @@
                                 @forelse ($products as $product)
                                     <tr>
                                         <td class="text-center">
-                                            <img src="{{ asset('/storage/products/' . $product->image) }}" class="rounded" style="width: 150px">
+                                            <img src="{{ asset('/storage/products/'.$product->image) }}" class="rounded" style="width: 150px">
                                         </td>
                                         <td>{{ $product->title }}</td>
                                         <td>{{ $product->product_category_name }}</td>
-                                        <td>Rp {{ number_format($product->price, 2, ',', '.') }}</td>
+                                        <td>{{ "Rp " . number_format($product->price, 2, ',', '.') }}</td>
                                         <td>{{ $product->stock }}</td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('products.destroy', $product->id) }}" method="POST">
