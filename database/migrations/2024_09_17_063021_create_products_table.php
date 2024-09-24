@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_category_id')->nullable()->index();
+            $table->foreignId('supplier_id');
+            $table->string('supplier_name');
             $table->string('image');
             $table->string('title');
             $table->text('description');
@@ -31,7 +33,21 @@ return new class extends Migration
         Schema::create('supplier', function (Blueprint $table) {
             $table->id();
             $table->string('supplier_name');
+            $table->string('supplier_address');           
             $table->string('pic_supplier');
+            $table->string('pic_number');
+            $table->timestamps();
+        });
+
+        Schema::create('transaction', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('product_id')->nullable()->index();
+            $table->foreignId('product_category_id')->nullable()->index();
+            $table->bigInteger('price');
+            $table->integer('purchase_amount');
+            $table->string('cashier_name');
+            $table->string('total');
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -42,5 +58,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('products');
+        Schema::dropIfExists('suppliers');
     }
 };

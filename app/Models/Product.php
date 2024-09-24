@@ -10,8 +10,8 @@ class Product extends Model
     public function get_product(){
         //get all products
         $sql = $this->select("products.*", "product_details.product_category_name as product_category_name")
-                    ->join('product_details', 'product_details.id', '=', 'products.product_category_id');
-
+                    ->join('product_details', 'product_details.id', '=', 'products.product_category_id')
+                    ->join('supplier', 'supplier.id', '=', 'products.supplier_id');
         return $sql;
     }
 }
