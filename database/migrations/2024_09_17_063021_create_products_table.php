@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_category_id')->nullable()->index();
             $table->foreignId('supplier_id');
-            $table->string('supplier_name');
             $table->string('image');
             $table->string('title');
             $table->text('description');
@@ -24,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('product_details', function (Blueprint $table) {
+        Schema::create('product_category', function (Blueprint $table) {
             $table->id();
             $table->string('product_category_name');
             $table->timestamps();
