@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Tutorial Laravel 11</h3>
+                    <h3 class="text-center my-4">Data Transaction</h3>
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
@@ -24,42 +24,48 @@
                                 <tr>
                                     <th scope="col">Date</th>
                                     <th scope="col">Cashier Name</th>
-                                    <th scope="col">Title</th>
+                                    <th scope="col">Product Title</th>
                                     <th scope="col">Product Category</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col">Total</th>
-                                    <th scope="col" style="width: 20%">ACTIONS</th>
+                                    <th scope="col" style="width: 20%">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($transactions as $transaction)
+                                @forelse ($data as $transaction)
                                     <tr>
-                                        <td>{{ $transaction->timestamps }}</td>
+                                        <td>{{ $transaction->transaction_date }}</td>
                                         <td>{{ $transaction->cashier_name }}</td>
-                                        <td>{{ $transaction->title }}</td>
-                                        <td>{{ $transaction->product_category_id }}</td>
-                                        <td>{{ "Rp " . number_format($transaction->price, 2, ',', '.') }}</td>
+
+                                        <td>{{ $transaction->title ? $transaction->title : 'Produk tidak ditemukan' }}</td>
+                                        <td>{{ $transaction->product_category_name ? $transaction->product_category_name : 'Kategori Produk tidak ditemukan' }}</td>
+
+                                        {{-- Cek apakah harga produk ada --}}
+                                        <td>{{ "Rp " . number_format($transaction->price, 2, ',', '.')}}</td>
                                         <td>{{ $transaction->purchase_amount }}</td>
-                                        <td>{{ $transaction->total }}</td>
+                                        
+                                        {{-- Cek total harga --}}
+                                        <td>{{"Rp " . number_format($transaction->price * $transaction->purchase_amount, 2, ',', '.')}}</td>
+                                        
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('transaction.destroy', $transaction->id) }}" method="POST">
                                                 <a href="{{ route('transaction.show', $transaction->id) }}" class="btn btn-sm btn-dark">SHOW</a>
                                                 <a href="{{ route('transaction.edit', $transaction->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">DELETE</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @empty
-                                    <div class="alert alert-danger">
-                                        Data transaction belum Tersedia.
-                                    </div>
+                                    <tr>
+                                        <td colspan="8" class="text-center">Data transaction belum tersedia.</td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
-                        {{ $transactions->links() }}
+                        {{ $data->links() }}
                     </div>
                 </div>
             </div>
@@ -88,11 +94,7 @@
                 timer: 2000
             });
         @endif
-
     </script>
 
 </body>
 </html>
-
-
-            
