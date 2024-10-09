@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f4f6f9; /* Warna latar belakang yang lebih lembut */
+            background-color: #f4f6f9;
             color: #333;
         }
 
@@ -19,11 +19,11 @@
 
         .card {
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card-body img {
-            border-radius: 10px; /* Gambar lebih halus */
+            border-radius: 10px;
             object-fit: cover;
         }
 
@@ -33,7 +33,7 @@
         }
 
         p {
-            font-size: 1.1rem; /* Ukuran font sedikit lebih besar untuk keterbacaan */
+            font-size: 1.1rem;
         }
 
         hr {

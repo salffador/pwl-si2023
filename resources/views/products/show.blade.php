@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #dfe6e9; /* Background lebih terang */
+            background-color: #dfe6e9;
             color: #333;
             transition: background 0.3s, color 0.3s;
             min-height: 100vh;
@@ -23,7 +23,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
-            background-color: #ffffff; /* Background card tetap putih untuk kontras */
+            background-color: #ffffff;
         }
         .card:hover {
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
@@ -31,30 +31,30 @@
         .card-body {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            color: #2c3e50; /* Warna teks di dalam card */
+            color: #2c3e50;
         }
         h3 {
-            color: #2980b9; /* Biru lembut untuk header */
+            color: #2980b9;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         img {
             border-radius: 10px;
             transition: transform 0.3s;
             width: 100%;
-            max-height: 500px; /* Tinggi maksimal gambar */
+            max-height: 500px;
             object-fit: cover;
         }
         img:hover {
             transform: scale(1.05);
         }
         p {
-            color: #34495e; /* Teks lebih gelap */
+            color: #34495e;
         }
         hr {
             border-top: 1px solid #bdc3c7;
         }
         code {
-            color: #e74c3c; /* Warna merah untuk harga */
+            color: #e74c3c;
         }
     </style>
 </head>
