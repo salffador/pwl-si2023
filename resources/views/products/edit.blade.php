@@ -3,26 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f4f8; /* Warna latar belakang yang lembut */
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin-top: 40px;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk kesan modern */
+        }
+
+        .card-body {
+            background-color: #ffffff; /* Card dengan warna putih */
+            padding: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #2c3e50; /* Warna teks lebih gelap untuk kontras */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Warna tombol biru cerah */
+            border: none;
+        }
+
+        .btn-warning {
+            background-color: #f39c12; /* Warna tombol reset oranye */
+            border: none;
+        }
+
+        .btn-primary:hover, .btn-warning:hover {
+            opacity: 0.9; /* Efek hover */
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        h3 {
+            color: #2980b9;
+        }
+    </style>
 </head>
-<body style="background: lightgray">
-    <div class="container mt-5 mb-5">
+<body>
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3>Edit Product</h3>
-                    <div class="card border-0 shadow-sm rounded">
-                        <div class="card-body">
-                            <form action="{{ route('products.update', $data['product']->id) }}" method="POST" enctype="multipart/form-data">
+                <div class="card border-0 shadow-sm rounded">
+                    <div class="card-body">
+                        <form action="{{ route('products.update', $data['product']->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">IMAGE</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
-
-                                <!-- error message untuk image -->
                                 @error('image')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
@@ -40,7 +92,6 @@
                                         {{ $category->product_category_name }}</option>
                                     @endforeach
                                 </select>
-                                <!-- error message untuk product_category_id -->
                                 @error('product_category_id')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
@@ -58,7 +109,6 @@
                                         {{ $supplier->supplier_name }}</option>
                                     @endforeach
                                 </select>
-                                <!-- error message untuk product_category_id -->
                                 @error('supplier_id')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
@@ -70,8 +120,6 @@
                                 <label class="font-weight-bold">TITLE</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
                                 value="{{ old('title', $data['product']->title) }}" placeholder="Masukkan Judul Product">
-
-                                <!-- error message untuk title -->
                                 @error('title')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
@@ -81,11 +129,8 @@
 
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">DESCRIPTION</label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" 
-                                name="description" rows="5" placeholder="Masukkan Description Product">
-                                {{ old('description', $data['product']->description) }}</textarea>
-
-                                <!-- error message untuk description -->
+                                <textarea class="form-control @error('description') is-invalid @enderror"
+                                name="description" rows="5" placeholder="Masukkan Description Product">{{ old('description', $data['product']->description) }}</textarea>
                                 @error('description')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
@@ -99,8 +144,6 @@
                                         <label class="font-weight-bold">PRICE</label>
                                         <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
                                         value="{{ old('price', $data['product']->price) }}" placeholder="Masukkan Harga Product">
-
-                                        <!-- error message untuk title -->
                                         @error('price')
                                             <div class="alert alert-danger mt-2">
                                                 {{ $message }}
@@ -112,10 +155,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label class="font-weight-bold">STOCK</label>
-                                        <input type="number" class="form-control @error('stock') is-invalid @enderror" 
-                                        name="stock" value="{{ old('stock', $data['product']->stock) }}" placeholder="Masukkan Stock Product"></input>
-
-                                        <!-- error message untuk description -->
+                                        <input type="number" class="form-control @error('stock') is-invalid @enderror"
+                                        name="stock" value="{{ old('stock', $data['product']->stock) }}" placeholder="Masukkan Stock Product">
                                         @error('stock')
                                             <div class="alert alert-danger mt-2">
                                                {{ $message }}
@@ -125,11 +166,10 @@
                                 </div>
                             </div>
 
-                                <button type="submit" class="btn btn-md btn-primary me-3">UPDATE</button>
-                                <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                            <button type="submit" class="btn btn-md btn-primary me-3">UPDATE</button>
+                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -139,7 +179,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'description' );
+        CKEDITOR.replace('description');
     </script>
 </body>
 </html>
