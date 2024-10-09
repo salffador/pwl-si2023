@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f0f4f8; /* Latar belakang yang lebih terang */
-            color: #333; /* Warna teks */
+            background-color: #f0f4f8; 
+            color: #333; 
         }
 
         .container {
@@ -19,31 +19,31 @@
 
         .card {
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card-body {
-            background-color: #ffffff; /* Latar belakang putih */
+            background-color: #ffffff;
             padding: 30px;
         }
 
         .form-group label {
             font-weight: bold;
-            color: #2c3e50; /* Warna teks label */
+            color: #2c3e50;
         }
 
         .btn-primary {
-            background-color: #007bff; /* Warna tombol biru cerah */
+            background-color: #007bff;
             border: none;
         }
 
         .btn-warning {
-            background-color: #f39c12; /* Warna tombol reset oranye */
+            background-color: #f39c12;
             border: none;
         }
 
         .btn-primary:hover, .btn-warning:hover {
-            opacity: 0.9; /* Efek hover */
+            opacity: 0.9;
         }
 
         .form-control {
@@ -65,38 +65,26 @@
                     <div class="card-body">
                         <form id="supplierForm" action="{{ route('supplier.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-
-                            <!-- Supplier Image -->
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">IMAGE</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
                             </div>
-
-                            <!-- Supplier Name -->
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">SUPPLIER NAME</label>
                                 <input type="text" class="form-control @error('supplier_name') is-invalid @enderror" name="supplier_name" placeholder="Enter Supplier Name">
                             </div>
-
-                            <!-- Supplier Address -->
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">SUPPLIER ADDRESS</label>
                                 <input type="text" class="form-control @error('supplier_address') is-invalid @enderror" name="supplier_address" placeholder="Enter Supplier Address">
                             </div>
-
-                            <!-- PIC Supplier -->
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">PIC SUPPLIER</label>
                                 <input type="text" class="form-control @error('pic_supplier') is-invalid @enderror" name="pic_supplier" placeholder="Enter PIC Supplier">
                             </div>
-
-                            <!-- PIC Number -->
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">PIC NUMBER</label>
                                 <input type="text" class="form-control @error('pic_number') is-invalid @enderror" name="pic_number" placeholder="Enter PIC Number">
                             </div>
-
-                            <!-- Submit and Reset Buttons -->
                             <button type="submit" class="btn btn-md btn-primary me-3">SAVE</button>
                             <button type="button" id="resetBtn" onclick="resetForm()" class="btn btn-md btn-warning">RESET</button>
 
@@ -111,7 +99,7 @@
 
     <script>
         function resetForm() {
-            document.getElementById("supplierForm").reset(); // Reset all form values
+            document.getElementById("supplierForm").reset();
         }
     </script>
 </body>

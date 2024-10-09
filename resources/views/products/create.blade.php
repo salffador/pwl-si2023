@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f0f4f8; /* Warna latar belakang yang lebih terang */
+            background-color: #f0f4f8;
             color: #333;
         }
 
@@ -19,31 +19,31 @@
 
         .card {
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card-body {
-            background-color: #ffffff; /* Latar belakang putih */
+            background-color: #ffffff;
             padding: 30px;
         }
 
         .form-group label {
             font-weight: bold;
-            color: #2c3e50; /* Warna teks */
+            color: #2c3e50;
         }
 
         .btn-primary {
-            background-color: #007bff; /* Warna tombol biru cerah */
+            background-color: #007bff;
             border: none;
         }
 
         .btn-warning {
-            background-color: #f39c12; /* Warna tombol reset oranye */
+            background-color: #f39c12;
             border: none;
         }
 
         .btn-primary:hover, .btn-warning:hover {
-            opacity: 0.9; /* Efek hover */
+            opacity: 0.9;
         }
 
         .form-control {
@@ -132,10 +132,9 @@
         CKEDITOR.replace('description');
     
         function resetForm() {
-            document.getElementById("productForm").reset(); // Mereset semua nilai dalam form
-            // Reset CKEditor content to empty
+            document.getElementById("productForm").reset();
             for (var instance in CKEDITOR.instances) {
-                CKEDITOR.instances[instance].setData(''); // Reset CKEditor content
+                CKEDITOR.instances[instance].setData('');
             }
         }
     </script>
