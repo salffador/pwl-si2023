@@ -31,6 +31,7 @@ return new class extends Migration
 
         Schema::create('supplier', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
             $table->string('supplier_name');
             $table->string('supplier_address');           
             $table->string('pic_supplier');

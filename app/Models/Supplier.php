@@ -10,9 +10,7 @@ class Supplier extends Model
     use HasFactory;
 
     protected $table = 'supplier';
-    protected $fillable = ['supplier_name', 'pic_supplier'];
-    public $timestamps = true;
-
+    protected $fillable = ['supplier_name', 'supplier_address', 'pic_supplier', 'pic_number', 'image'];
     public function get_supplier(){
         $sql = $this->select("supplier.*");
 

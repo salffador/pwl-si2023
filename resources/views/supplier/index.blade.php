@@ -22,6 +22,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
+                                    <th scope="col">IMAGE</th>
                                     <th scope="col">SUPPLIER NAME</th>
                                     <th scope="col">SUPPLIER ADDRESS</th>
                                     <th scope="col">PIC SUPPLIER</th>
@@ -32,6 +33,9 @@
                             <tbody>
                                 @forelse ($suppliers as $supplier)
                                     <tr>
+                                        <td class="text-center">
+                                            <img src="{{asset('/storage/images/'.$supplier->image)}}" style="width: 150px" class="rounded">
+                                        </td>
                                         <td>{{ $supplier->supplier_name }}</td>
                                         <td>{{ $supplier->supplier_address }}</td>
                                         <td>{{ $supplier->pic_supplier }}</td>
