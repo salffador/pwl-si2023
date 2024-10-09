@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Transaction;  // Pastikan penamaan model yang benar
+use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * index
-     *
-     * @return View
-     */
     public function index() : View
     {
-        $transaksi_penjualan = new Transaction;
-        $data = $transaksi_penjualan->get_transaction()->latest()->paginate(10);
-             
-        foreach ($data as $key => $value) {
-            $data[$key]['total'] = $value['purchase_amount'] * $value['price'];
+        $transaction = new Transaction;
+        $transactions = $transaction->get_transaction()
+                            ->latest()
+                            ->paginate(10);
+        foreach ($transactions as $transaction) {
+            $transaction->total_harga = $transaction->harga * $transaction->jumlah;
         }
 
-        return view('transaction.index', compact('data'));
+        return view('transaction.index', compact('transactions'));    
     }
 }
+
+
+
+
+

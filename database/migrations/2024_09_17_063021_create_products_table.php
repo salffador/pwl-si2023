@@ -39,15 +39,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->nullable()->index();
-            $table->foreignId('product_category_id')->nullable()->index();
-            $table->bigInteger('price');
-            $table->integer('purchase_amount');
-            $table->string('cashier_name');
-            $table->string('total');
-            $table->string('title');
+            $table->foreignId('products_id')->nullable()->index();
+            $table->integer('jumlah_pembelian');
+            $table->string('nama_kasir');
+            $table->timestamp('tanggal_transaksi');
             $table->timestamps();
         });
     }
@@ -59,5 +56,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('products');
         Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('transactions');
     }
 };
