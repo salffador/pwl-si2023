@@ -6,8 +6,66 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Supplier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f4f8; /* Latar belakang lebih terang */
+            color: #333; /* Warna teks */
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+        }
+
+        .card-body {
+            background-color: #ffffff; /* Latar belakang putih */
+            padding: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #2c3e50; /* Warna teks label */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Warna tombol biru cerah */
+            border: none;
+        }
+
+        .btn-warning {
+            background-color: #f39c12; /* Warna tombol reset oranye */
+            border: none;
+        }
+
+        .btn-primary:hover, .btn-warning:hover {
+            opacity: 0.9; /* Efek hover */
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        h3 {
+            color: #2980b9;
+        }
+
+        .rounded {
+            border-radius: 5px; /* Rounded image */
+        }
+
+        .text-muted {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+    </style>
 </head>
-<body style="background: lightgray">
+<body>
 
     <div class="container mt-5 mb-5">
         <div class="row">

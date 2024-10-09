@@ -6,16 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Show Supplier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9; /* Warna latar belakang yang lebih lembut */
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin-top: 40px;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+        }
+
+        .card-body img {
+            border-radius: 10px; /* Gambar lebih halus */
+            object-fit: cover;
+        }
+
+        h3 {
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.1rem; /* Ukuran font sedikit lebih besar untuk keterbacaan */
+        }
+
+        hr {
+            border-top: 2px solid #ddd;
+        }
+
+    </style>
 </head>
-<body style="background: lightgray">
+<body>
 
     <div class="container mt-5 mb-5">
         <div class="row">
-            <h3>Show Supplier</h3>
+            <h3>Supplier Details</h3>
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <img src="{{ asset('/storage/images/' . $supplier->image) }}" class="rounded" style="width: 100%">
+                        <img src="{{ asset('/storage/images/' . $supplier->image) }}" class="rounded w-100">
                     </div>
                 </div>
             </div>
@@ -34,7 +69,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
