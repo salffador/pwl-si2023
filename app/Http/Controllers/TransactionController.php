@@ -16,14 +16,9 @@ class TransactionController extends Controller
                             ->latest()
                             ->paginate(10);
         foreach ($transactions as $transaction) {
-            $transaction->total_harga = $transaction->harga * $transaction->jumlah;
+            $transaction->total_harga = $transaction->product_price * $transaction->jumlah_pembelian;
         }
 
         return view('transaction.index', compact('transactions'));    
     }
 }
-
-
-
-
-
