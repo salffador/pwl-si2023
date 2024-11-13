@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/products', \App\Http\Controllers\ProductController::class);
-Route::resource('/supplier', \App\Http\Controllers\SupplierController::class);
-Route::resource('/transaction', \App\Http\Controllers\TransactionController::class);
-
+Route::resource('/products', ProductController::class);
+Route::resource('/supplier', SupplierController::class);
+Route::resource('/transaction', TransactionController::class);
+Route::resource('/dashboard', DashboardController::class);
