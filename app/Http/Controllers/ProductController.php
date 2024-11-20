@@ -18,13 +18,10 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        // Mendapatkan semua produk dengan pagination
         $product = new Product();
         $products = $product->get_product()
                             ->latest()
                             ->paginate(10);
-
-        // Render view dengan produk
         return view('products.index', compact('products'));
     }
 
@@ -35,11 +32,9 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        // Membuat instansi baru dari model Product dan Supplier
         $product = new Product();
         $supplier = new Supplier();
 
-        // Mengambil data kategori produk dan supplier
         $data['categories'] = $product->get_product_category()->get();
         $data['supplier_'] = $supplier->get_supplier()->get();
 
@@ -54,7 +49,6 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // Validasi form
         $validatedData = $request->validate([
             'image'                 => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'title'                 => 'required|min:5',
@@ -65,12 +59,10 @@ class ProductController extends Controller
             'stock'                 => 'required|numeric',
         ]);
 
-        // Memeriksa apakah ada file gambar yang diunggah
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $image->store('public/images');
 
-            // Menyimpan produk ke database
             Product::create([
                 'image'               => $image->hashName(),
                 'title'               => $request->title,
@@ -81,11 +73,9 @@ class ProductController extends Controller
                 'stock'               => $request->stock,
             ]);
 
-            // Redirect ke halaman index dengan pesan sukses
             return redirect()->route('products.index')->with(['success' => 'Data Telah Disimpan']);
         }
 
-        // Redirect ke halaman index dengan pesan error
         return redirect()->route('products.index')->with(['error' => 'Data gagal Disimpan']);
     }
 
@@ -131,7 +121,6 @@ class ProductController extends Controller
     */
     public function update(Request $request, $id): RedirectResponse
     {
-    //validate form
     $request->validate([
         'image'        => 'image|mimes:jpeg,jpg,png|max:2048',
         'title'        => 'required|min:5',
@@ -140,21 +129,16 @@ class ProductController extends Controller
         'stock'        => 'required|numeric'
     ]);
 
-    //get product by ID
     $product_model = new Product;
     $product = $product_model->get_product()->where("products.id", $id)->firstOrFail();
 
-    //check if image is uploaded
     if ($request->hasFile('image')) {
 
-        //upload new image
         $image = $request->file('image');
         $image->storeAs('public/images', $image->hashName());
 
-        //delete old image
         Storage::delete('public/images/' . $product->image);
 
-        //update product with new image
         $product->update([
             'image'               => $image->hashName(),
             'title'               => $request->title,
@@ -186,17 +170,14 @@ class ProductController extends Controller
     */
     public function destroy($id): RedirectResponse
     {
-        // get product by ID
+
         $product_model = new Product;
         $product = $product_model->get_product()->where("products.id", $id)->firstOrFail();
 
-        // delete image
         Storage::delete('public/images/' . $product->image);
 
-        // delete product
         $product->delete();
 
-        // redirect to index
         return redirect()->route('products.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 

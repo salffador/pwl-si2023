@@ -54,29 +54,43 @@
         }
         /* Gaya untuk mode gelap */
         .dark-mode {
-            background-color: #343a40; 
+            background-color: #000; /* Mengubah latar belakang menjadi hitam */
             color: #e9ecef;
         }
         .dark-mode .card {
-            background-color: #495057;
+            background-color: #212529; /* Warna latar belakang kartu */
             border-color: #6c757d;
         }
-        .dark-mode .card .text-dark {
-            color: black !important;
+        .dark-mode .text-dark {
+            color: #e9ecef !important; /* Ganti warna teks untuk dark mode */
         }
         .dark-mode .table th {
             background-color: #007bff;
             color: #fff;
         }
         .dark-mode .table tbody tr:hover {
-            background-color: #6c757d;
+            background-color: #343a40; /* Warna saat hover di tabel */
         }
-        .dark-mode .btn {
-            background-color: #6c757d;
+        .dark-mode .btn-info {
+            background-color: #17a2b8;
             color: #fff;
         }
-        .dark-mode .btn:hover {
-            background-color: #5a6268;
+        .dark-mode .btn-info:hover {
+            background-color: #138496;
+        }
+        .dark-mode .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .dark-mode .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .dark-mode .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .dark-mode .btn-danger:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -85,14 +99,15 @@
         <h3 class="text-header">Supplier Management</h3>
         <div class="card">
             <div class="card-body">
+                <!-- Perubahan ada di sini -->
                 <div class="d-flex justify-content-between mb-4">
                     <a href="{{ route('supplier.create') }}" class="btn btn-success">
                         <i class="fas fa-plus"></i> Add Supplier
                     </a>
-                </div>
-                <div class="form-check form-switch mb-4">
-                    <input class="form-check-input" type="checkbox" id="modeSwitch">
-                    <label class="form-check-label" for="modeSwitch">Dark Mode</label>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="modeSwitch">
+                        <label class="form-check-label" for="modeSwitch">Dark Mode</label>
+                    </div>
                 </div>
 
                 <table class="table table-striped">
@@ -124,7 +139,7 @@
                                     <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-primary btn-sm me-2">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    @csrf
+                                    @csrf   
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">
                                         <i class="fas fa-trash"></i> Delete

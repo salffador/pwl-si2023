@@ -81,6 +81,11 @@
                     <input type="datetime-local" class="form-control" id="tanggal_transaksi" name="tanggal_transaksi" value="{{ $transaction->tanggal_transaksi }}" required>
                 </div>
 
+                <div class="form-group mb-3">
+                    <label for="email_pembeli">Email Pembeli:</label>
+                    <input type="email" class="form-control @error('email_pembeli') is-invalid @enderror" id="email_pembeli" name="email_pembeli" placeholder="Enter Email Pembeli" required>
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">Detail Produk:</label>
                     <table class="table table-bordered">

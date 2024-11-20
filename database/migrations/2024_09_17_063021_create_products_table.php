@@ -41,12 +41,12 @@ return new class extends Migration
 
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('products_id')->nullable()->index();
-            $table->integer('jumlah_pembelian');
             $table->string('nama_kasir');
             $table->timestamp('tanggal_transaksi');
+            $table->string('email_pembeli');
             $table->timestamps();
         });
+
     }
 
     /**

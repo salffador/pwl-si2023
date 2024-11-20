@@ -11,47 +11,45 @@
             background-color: #f0f4f8;
             color: #333;
         }
-
         .container {
             max-width: 900px;
             margin-top: 40px;
         }
-
         .card {
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-
         .card-body {
             background-color: #ffffff;
             padding: 30px;
         }
-
         .form-group label {
             font-weight: bold;
             color: #2c3e50;
         }
-
         .btn-primary {
             background-color: #007bff;
             border: none;
         }
-
         .btn-warning {
             background-color: #f39c12;
             border: none;
         }
-
         .btn-primary:hover, .btn-warning:hover {
             opacity: 0.9;
         }
-
         .form-control {
             border-radius: 5px;
         }
-
         h3 {
             color: #2980b9;
+        }
+        #loading-spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
@@ -64,12 +62,10 @@
                     <div class="card-body">
                         <form id="productForm" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">IMAGE</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
                             </div>
-
                             <div class="form-group mb-3">
                                 <label for="product_category_id">Product Category</label>
                                 <select class="form-control" id="product_category_id" name="product_category_id">
@@ -79,7 +75,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
                             <div class="form-group mb-3">
                                 <label for="supplier_id">Supplier</label>
                                 <select class="form-control" id="supplier_id" name="supplier_id">
@@ -89,17 +84,14 @@
                                     @endforeach
                                 </select>
                             </div>
-
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">TITLE</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Masukkan Judul Product">
                             </div>
-
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">DESCRIPTION</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5" placeholder="Masukkan Descripton Product"></textarea>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -107,7 +99,6 @@
                                         <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="Masukkan Harga Product">
                                     </div>
                                 </div>
-
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label class="font-weight-bold">STOCK</label>
@@ -115,7 +106,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <button type="submit" class="btn btn-md btn-primary me-3">SAVE</button>
                             <button type="button" id="resetBtn" onclick="resetForm()" class="btn btn-md btn-warning">RESET</button>
                         </form>

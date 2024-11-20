@@ -80,6 +80,11 @@
                             </div>
 
                             <div class="form-group mb-3">
+                                <label for="email_pembeli">Email Pembeli:</label>
+                                <input type="email" class="form-control @error('email_pembeli') is-invalid @enderror" id="email_pembeli" name="email_pembeli" placeholder="Enter Email Pembeli" required>
+                            </div>
+
+                            <div class="form-group mb-3">
                                 <label for="tanggal_transaksi">Tanggal Transaksi:</label>
                                 <input type="datetime-local" class="form-control @error('tanggal_transaksi') is-invalid @enderror" id="tanggal_transaksi" name="tanggal_transaksi" required>
                             </div>

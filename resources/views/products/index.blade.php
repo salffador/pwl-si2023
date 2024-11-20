@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Product Management</title>
+    <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!-- Link Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
@@ -31,6 +33,8 @@
             color: #495057;
             text-align: center;
             margin-bottom: 20px;
+            /* Apply the new font here */
+            font-family: 'Playfair Display', serif;
         }
         .dark-mode .text-header {
             color: white;
@@ -53,15 +57,12 @@
             transform: translateY(-2px);
         }
         .dark-mode {
-            background-color: #343a40;
+            background-color: #000000;
             color: #e9ecef;
         }
         .dark-mode .card {
             background-color: #495057;
             border-color: #6c757d;
-        }
-        .dark-mode .card .text-dark {
-            color: black !important;
         }
         .dark-mode .table th {
             background-color: #007bff;
@@ -70,29 +71,71 @@
         .dark-mode .table tbody tr:hover {
             background-color: #6c757d;
         }
-        .dark-mode .btn {
-            background-color: #6c757d;
-            color: #fff;
+        .dark-mode .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: white;
         }
-        .dark-mode .btn:hover {
-            background-color: #5a6268;
+        .dark-mode .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+        .dark-mode .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+        .dark-mode .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .dark-mode .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .dark-mode .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        .pagination .page-item .page-link {
+            font-size: 14px !important;
+            padding: 5px 10px !important;
+        }
+        .pagination .page-item {
+            margin: 0 5px !important;
+        }
+        .pagination .page-item .page-link:hover {
+            background-color: #0056b3 !important;
+            color: white !important;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #007bff !important;
+            border-color: #007bff !important;
+            color: white !important;
+        }
+        @media (max-width: 768px) {
+            .pagination .page-item .page-link {
+                font-size: 12px !important;
+                padding: 4px 8px !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h3 class="text-header">Product Management</h3>
+        <h3 class="text-header">Marketplace Products</h3>
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between mb-4">
                     <a href="{{ route('products.create') }}" class="btn btn-success">
                         <i class="fas fa-plus"></i> Add Product
                     </a>
-                </div>
+                    <div class="form-check form-switch ms-auto">
+                        <input class="form-check-input" type="checkbox" id="modeSwitch">
 
-                <div class="form-check form-switch mb-4">
-                    <input class="form-check-input" type="checkbox" id="modeSwitch">
-                    <label class="form-check-label" for="modeSwitch">dark mode</label>
+                        <label class="form-check-label" for="modeSwitch">dark mode</label>
+                    </div>
                 </div>
 
                 <table class="table table-striped">
